@@ -19,15 +19,6 @@
                 xfbml: true,                                  // Look for social plugins on the page
                 version: "v2.2"
             });
-            document.getElementsByClassName('js_on')[0].onclick = function(){
-                FB.getLoginStatus(function (res) {
-                    if(res && res.status == 'connected'){
-                        FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html", function (argument) {
-                            console.log(argument);
-                        });
-                    }
-                })
-            }
         };
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -37,6 +28,20 @@
             fjs.parentNode.insertBefore(js, fjs);
         } (document, 'script', 'facebook-jssdk'));
 
+            document.getElementsByClassName('js_on')[0].onclick = function(){
+                FB.getLoginStatus(function (res) {
+                    if(res && res.status == 'connected'){
+                        FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html", function (argument) {
+                            console.log(argument);
+                        });
+                    }
+                    else{
+                         FB.login(function(response) {
+                           // handle the response
+                         }, {scope: 'manage_notifications'});
+                    }
+                })
+            }
 
 	</script> 
     </body>
