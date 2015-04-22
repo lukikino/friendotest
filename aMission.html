@@ -33,7 +33,7 @@
                     if(res && res.status == 'connected'){
                         FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html",
                             "post",
-                            ,{}
+                            {},
                             function (argument) {
                                 console.log(argument);
                             });
