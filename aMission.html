@@ -31,9 +31,12 @@
             document.getElementsByClassName('js_on')[0].onclick = function(){
                 FB.getLoginStatus(function (res) {
                     if(res && res.status == 'connected'){
-                        FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html", function (argument) {
-                            console.log(argument);
-                        });
+                        FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html",
+                            "post",
+                            ,{}
+                            function (argument) {
+                                console.log(argument);
+                            });
                     }
                     else{
                          FB.login(function(response) {
