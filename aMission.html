@@ -29,7 +29,7 @@
         } (document, 'script', 'facebook-jssdk'));
 
         document.getElementsByClassName('js_on')[0].onclick = function(){
-            FB.login(function (res) {
+            FB.getLoginStatus(function (res) {
                 if(res && res.status == 'connected'){
                     FB.api("/" + FB.getUserID() + "/notifications?access_token=" + FB.getAccessToken() + "&template=iammessagepleaseclickme&href=test2.html", function (argument) {
                         console.log(argument);
